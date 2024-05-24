@@ -122,7 +122,7 @@ declaration {
 }
 
 FunctionDeclaration {
-  async? !statement kw<"function"> Star? VariableDefinition? functionSignature (Block | semi)
+  async? !statement (kw<"function"> | kw<"hook">) Star? VariableDefinition? functionSignature (Block | semi)
 }
 
 ComponentDeclaration {

@@ -7,6 +7,12 @@ const example = `import * as React from 'react';
 component Introduction(name: string, age: number) {
   return <h1>My name is {name} and I am {age} years old</h1>
 }
+
+hook useMultiplier(x: number): number {
+  const [y, setY] = useState(1);
+  useEffect(() => { setY(0) })
+  return x * y;
+}
 `
 
 globalThis.editor = new EditorView({

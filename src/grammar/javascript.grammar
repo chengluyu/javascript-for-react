@@ -73,7 +73,7 @@ statement[@isGroup=Statement] {
 
 ExportDeclaration {
   kw<"export"> Star (ckw<"as"> (VariableName | String))? ckw<"from"> String semi |
-  kw<"export"> kw<"default"> (FunctionDeclaration | ClassDeclaration | expression semi) |
+  kw<"export"> kw<"default"> (FunctionDeclaration | ComponentDeclaration | ClassDeclaration | expression semi) |
   kw<"export"> tskw<"type">? declaration |
   kw<"export"> tskw<"type">? ExportGroup (ckw<"from"> String)? semi |
   kw<"export"> "=" expression semi
@@ -111,6 +111,7 @@ ForOfSpec { forXSpec<ckw<"of">> }
 
 declaration {
   FunctionDeclaration |
+  ComponentDeclaration |
   ClassDeclaration |
   VariableDeclaration |
   TypeAliasDeclaration |
@@ -122,6 +123,10 @@ declaration {
 
 FunctionDeclaration {
   async? !statement kw<"function"> Star? VariableDefinition? functionSignature (Block | semi)
+}
+
+ComponentDeclaration {
+  async? !statement kw<"component"> VariableDefinition? functionSignature (Block | semi)
 }
 
 ClassDeclaration {

@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+#editor {
+  width: 700px;
+  @apply border border-stone-400;
+}
+
+.cm-editor {
+  width: 700px;
+  height: 400px;
+}

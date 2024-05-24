@@ -9,8 +9,8 @@ component Introduction(name: string, age: number) {
 }
 
 hook useMultiplier(x: number): number {
-  const [y, setY] = useState(1);
-  useEffect(() => { setY(0) })
+  state y = 1;
+  useEffect(() => { mutate y = 0 })
   return x * y;
 }
 `

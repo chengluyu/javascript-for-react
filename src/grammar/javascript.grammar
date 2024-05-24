@@ -114,6 +114,7 @@ declaration {
   ComponentDeclaration |
   ClassDeclaration |
   VariableDeclaration |
+  StateDeclaration |
   TypeAliasDeclaration |
   InterfaceDeclaration |
   EnumDeclaration |
@@ -188,6 +189,10 @@ variableDeclarationKeyword {
 
 VariableDeclaration {
   variableDeclarationKeyword commaSep1<patternAssignTyped> semi
+}
+
+StateDeclaration {
+  kw<"state"> identifier ~arrow TypeAnnotation? ("=" expressionNoComma)? semi
 }
 
 TypeAliasDeclaration {
@@ -314,7 +319,8 @@ expressionNoComma {
   PrefixCast { tsAngleOpen type ~tsAngle ">" expressionNoComma } |
   ArrowFunction[@dynamicPrecedence=1] {
     TypeParamList { tsAngleOpen commaSep<typeParam> ">" } ParamList TypeAnnotation? "=>" (Block | expressionNoComma)
-  }
+  } |
+  MutateExpression
 }
 
 ParenthesizedExpression { "(" expression ")" }
@@ -355,6 +361,10 @@ AwaitExpression[@dynamicPrecedence=1] {
   !prefix ckw<"await"> expressionNoComma
 }
 
+MutateExpression[@dynamicPrecedence=1] {
+  !prefix kw<"mutate"> identifier ~arrow assignOp expressionNoComma
+}
+
 UnaryExpression {
   !prefix (kw<"void"> | kw<"typeof"> | kw<"delete"> |
            LogicOp<"!"> | BitOp<"~"> | incdec | incdecPrefix | ArithOp<"+" | "-">)
@@ -378,9 +388,12 @@ BinaryExpression {
   expressionNoComma !or LogicOp<"||" | "??"> expressionNoComma
 }
 
+assignOp {
+  UpdateOp<($[+\-/%^] | "*" "*"? | "|" "|"? | "&" "&"? | "<<" | ">>" ">"? | "??") "=">
+}
+
 AssignmentExpression {
-  (VariableName | MemberExpression) !assign UpdateOp<($[+\-/%^] | "*" "*"? | "|" "|"? | "&" "&"? | "<<" | ">>" ">"? | "??") "=">
-    expressionNoComma |
+  (VariableName | MemberExpression) !assign assignOp expressionNoComma |
   (VariableName | MemberExpression | ArrayPattern | ObjectPattern) !assign "=" expressionNoComma
 }
 

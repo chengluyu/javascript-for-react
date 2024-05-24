@@ -6,9 +6,67 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaScript for React</title>
   </head>
-  <body>
-    <p>What if we tailored the JavaScript syntax for React?</p>
-    <div id="editor"></div>
+  <body class="p-4">
+    <div class="prose">
+      <h1>JavaScript for React</h1>
+      <p>
+        What if we tailored the JavaScript syntax for React? People have
+        imagined many JavaScript syntax extensions designed for React.
+      </p>
+      <ol class="list-decimal ml-6 mt-2 space-y-1">
+        <li>
+          <a
+            class="underline underline-offset-4"
+            href="https://flow.org/en/docs/react/component-syntax/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Flow's Component Syntax</a
+          >
+        </li>
+        <li>
+          <a
+            class="underline underline-offset-4"
+            href="https://flow.org/en/docs/react/hook-syntax/"
+            target="_blank"
+            rel="noopener noreferrer"
+            >Flow's Hook Syntax</a
+          >
+        </li>
+        <li>
+          <a
+            class="underline underline-offset-4"
+            href="https://gist.github.com/HerringtonDarkholme/1e3781c59ccfbedea69e2864bf468c2a"
+            target="_blank"
+            rel="noopener noreferrer"
+            >@hd_nvim's Proposal of Effect Syntax</a
+          >
+        </li>
+        <li>
+          <a
+            class="underline underline-offset-4"
+            href="https://gist.github.com/HerringtonDarkholme/1e3781c59ccfbedea69e2864bf468c2a?permalink_comment_id=5067851#gistcomment-5067851"
+            target="_blank"
+            rel="noopener noreferrer"
+            >My Idea of State Syntax</a
+          >
+        </li>
+      </ol>
+      <p>
+        I implemented an editor that supports these syntaxes using CodeMirror
+        and its extensible lezer parser.
+      </p>
+    </div>
+    <div class="mt-4" id="editor"></div>
+    <p class="mt-4 font-medium text-stone-700">
+      by
+      <a
+        class="underline underline-offset-4 decoration-stone-500"
+        href="https://github.com/chengluyu"
+        target="_blank"
+        rel="noopener noreferrer"
+        >@chengluyu</a
+      >
+    </p>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

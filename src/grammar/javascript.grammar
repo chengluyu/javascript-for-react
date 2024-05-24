@@ -59,6 +59,8 @@ statement[@isGroup=Statement] {
     CatchClause { kw<"catch"> ("(" pattern ")")? Block }?
     FinallyClause { kw<"finally"> Block }?
   } |
+  EffectStatement { async? kw<"effect"> Block } |
+  CleanupStatement { kw<"cleanup"> Block } |
   ReturnStatement { kw<"return"> (noSemi expression)? semi } |
   ThrowStatement { kw<"throw"> expression semi } |
   BreakStatement { kw<"break"> (noSemi Label)? semi } |

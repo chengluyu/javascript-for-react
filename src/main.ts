@@ -13,6 +13,17 @@ hook useMultiplier(x: number): number {
   useEffect(() => { mutate y = 0 })
   return x * y;
 }
+
+hook useChatRoom(roomId) {
+  const [serverUrl, setServerUrl] = useState('https://localhost:1234');
+  effect {
+    const connection = createConnection(serverUrl, roomId);
+    connection.connect();
+    cleanup {
+      connection.disconnect();
+    }
+  }
+}
 `
 
 globalThis.editor = new EditorView({

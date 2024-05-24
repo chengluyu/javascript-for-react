@@ -2,7 +2,7 @@ import {styleTags, tags as t} from "@lezer/highlight"
 
 export const jsHighlight = styleTags({
   "get set async static": t.modifier,
-  "for while do if else switch try catch finally return throw break continue default case": t.controlKeyword,
+  "for while do if else switch try catch finally return throw break continue default case effect cleanup": t.controlKeyword,
   "in of await yield void typeof delete instanceof mutate": t.operatorKeyword,
   "let var const using function hook component class state extends": t.definitionKeyword,
   "import export from": t.moduleKeyword,
